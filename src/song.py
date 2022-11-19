@@ -11,6 +11,6 @@ class Song:
         """Returns length of a song"""
         return self.length
 
-    def __str__(self):
+    def __repr__(self) -> str:
         """Returns string representation of song object"""
-        return self.name.title() + ", " + str(self.length)
+        return f"{self.name.title()}, {str(self.length)}"
