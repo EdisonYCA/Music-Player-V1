@@ -9,11 +9,20 @@ class Artist:
         return self.albums
 
     def print_albums(self):
-        """Returns a string of artists albums with song count"""
+        """Returns a string of artists albums"""
         album_names = ""
         for album in range(len(self.albums)):
             album_names += str(self.albums[album])
+            album_names += "\t"
         return album_names
+
+    def print_songs(self):
+        """returns a string of artists songs"""
+        song_names = ""
+        for song in range(len(self.songs)):
+            song_names += str(self.songs[song])
+            song_names += "\t"
+        return song_names
 
     def get_name(self):
         """Returns artists name"""
@@ -25,8 +34,8 @@ class Artist:
 
     def add_album(self, album):
         """add album to artists current album list"""
-        for songs in range(len(album)):  # all songs in album should also be added into the artists song list
-            self.add_song(album[songs])
+        for song in range(len(album.songs)):  # all songs in album should also be added into the artists song list
+            self.add_song(album.songs[song])
 
         if self.get_albums() is None:
             self.albums = []
@@ -46,5 +55,4 @@ class Artist:
         """Represent artist object as a string"""
         return f"Artist: {self.name.title()}\n" \
                f"Albums: {str(self.print_albums())}\n" \
-               f"Songs: {str(self.get_songs())}"
-
+               f"Songs: {str(self.print_songs())}"
