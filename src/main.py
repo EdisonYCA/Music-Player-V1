@@ -13,21 +13,65 @@ def main():
 
         # ask the user to enter a song or album for the artist
         print(f"\nWould you like to enter a song, or a album for {artist_name}?\n"
-              "1. None\n"
+              "1. Song\n"
               "2. Album\n"
-              "3. Song")
-        artist_request = input("->")
+              "3. None")
+        request = input("-> ")
 
+        artist = Artist(artist_name)
+        if request == "1":
+            song_request()
+
+        elif request.lower() == "2":
+            print(f"\nLets add an album to {artist_name}'s profile.")
+
+            artist.add_album(album_request())
+            print("\nOperation successful!\n")
+            print(artist)
+
+        else:
+            print("Operation successful."
+                  "Results")
+
+            print(artist)
+            run_program = False
         run_program = False
 
 
+def album_request():
+    print("Enter the name of the album")
+    album_name = input("-> ")
 
-    # if user wants to enter album, while user enters song name and length,
-    # create new unique song object and append to album
-    # if user wants to enter a single song, append song into artist song list
-    # else exit program
+    enter_song = True
+    songs = []
+
+    print(f"\n{album_name} will need some songs.")
+    while enter_song:
+        song = song_request()
+        songs.append(song)
+        print("Would you like to add another song\n"
+              "1. Yes\n"
+              "2. No")
+        add_song = input("-> ")
+
+        if add_song == "1":
+            continue
+        elif add_song == "2":
+            enter_song = False
+
+    album = Album(album_name, songs)
+    return album
 
 
+def song_request():
+    print("Enter the name of the song")
+    song_name = input("-> ")
+
+    print(f"Enter the length of {song_name} (in the format: minutes.seconds)")
+    song_length = input("-> ")
+
+    user_song = Song(song_name, song_length)
+    return user_song
 
 
 if __name__ == "__main__":
