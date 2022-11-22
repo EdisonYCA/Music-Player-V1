@@ -30,7 +30,7 @@ def main():
             print(artist)
 
         else:
-            print("Operation successful."
+            print("\nOperation successful!\n"
                   "Results")
 
             print(artist)

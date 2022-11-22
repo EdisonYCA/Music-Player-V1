@@ -10,18 +10,24 @@ class Artist:
 
     def print_albums(self):
         """Returns a string of artists albums"""
-        album_names = ""
-        for album in range(len(self.albums)):
-            album_names += str(self.albums[album])
-            album_names += "\t"
+        album_names = "None"
+        if self.albums is not None:
+            album_names = ""
+            for album in range(len(self.albums)):
+                album_names += str(self.albums[album])
+                album_names += "\t\t"
+            return album_names
         return album_names
 
     def print_songs(self):
         """returns a string of artists songs"""
-        song_names = ""
-        for song in range(len(self.songs)):
-            song_names += str(self.songs[song])
-            song_names += "\t"
+        song_names = "None"
+        if self.songs is not None:
+            song_names = ""
+            for song in range(len(self.songs)):
+                song_names += str(self.songs[song])
+                song_names += "\t"
+            return song_names
         return song_names
 
     def get_name(self):
