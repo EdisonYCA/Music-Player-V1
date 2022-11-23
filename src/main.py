@@ -5,6 +5,7 @@ from song import Song
 
 def main():
     run_program = True
+
     while run_program:
         # ask the user to enter an artist name
         print("Welcome to Music Player V1\n"
@@ -20,7 +21,25 @@ def main():
 
         artist = Artist(artist_name)
         if request == "1":
-            song_request()
+            song = song_request()
+            artist.add_song(song)
+
+            print("Would you like to add another song?\n"
+                  "1. Yes\n"
+                  "2. No")
+
+            add_song = input("-> ")
+
+            while add_song == "1":
+                song = song_request()
+                artist.add_song(song)
+                print("Would you like to add another song?\n"
+                      "1. Yes\n"
+                      "2. No")
+                add_song = input("-> ")
+
+            print("Operation successful!\n")
+            print(artist)
 
         elif request.lower() == "2":
             print(f"\nLets add an album to {artist_name}'s profile.")
@@ -30,11 +49,9 @@ def main():
             print(artist)
 
         else:
-            print("\nOperation successful!\n"
-                  "Results")
-
+            print("\nOperation successful!\n")
             print(artist)
-            run_program = False
+
         run_program = False
 
 
@@ -45,7 +62,7 @@ def album_request():
     enter_song = True
     songs = []
 
-    print(f"\n{album_name} will need some songs.")
+    print(f"\n{album_name.title()} will need some songs.")
     while enter_song:
         song = song_request()
         songs.append(song)
